@@ -491,7 +491,7 @@ var onBlur = function (id)//focus bileşenden çıktı
             if (yazi === "")
             {
                 element.val(YAZI_KULLANICI_ADI);
-                CSS_YESIL_GOLGE.removeClass(CSS_ETKIN + " " + CSS_YESIL_GOLGE).addClass(CSS_ETKISIZ);
+                element.removeClass(CSS_ETKIN + " " + CSS_YESIL_GOLGE).addClass(CSS_ETKISIZ);
             }
             break;
 
