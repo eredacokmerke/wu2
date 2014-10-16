@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body id="projeekle_body">
+
+        <h:outputStylesheet library="css" name="sieses.css" />
+        <h:outputScript library="js" name="jquery-2.1.1.min.js" />
+        <h:outputScript library="js" name="jies.js" />
+
+        <h:form>
+
+            <div id="header">
+                <section class="ust_menu_1" id="baslik">
+                    <nav class="cl-effect-1">
+                        <span>Proje Ekle</span>
+                    </nav>
+                </section>
+            </div>
+
+            <br />
+
+            <div id="projeekle_div">
+                <table id="projeekle_table" class="ontanimliTable">
+                    <tr align="center"><td><h:inputText id="projeekle_it_proje_adi" class="ontanimliBicim ontanimliYaziBoyu ontanimliEtkisizEleman" onblur="onBlur(3)" onfocus="onFocus(3)" value="#{hata.projeAdi}" autocomplete="off"/></td></tr>
+                    <tr align="center"><td><h:inputTextarea id="projeekle_ita_aciklama"  class="ontanimliBicim aciklamaYazi ontanimliEtkisizEleman" onblur="onBlur(4)" onfocus="onFocus(4)" value="#{hata.projeAciklamasi}" /></td></tr>
+                    <tr align="center"><td><h:commandButton class="ontanimliBicim ontanimliYaziBoyu ontanimliDugme" value="Kaydet" action="#{hata.kaydetProje()}"></h:commandButton></td></tr>
+                </table>
+            </div>
+
+        </h:form>
+    </h:body>
+</html>

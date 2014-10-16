@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body id="gorevekle_body">
+
+        <h:outputStylesheet library="css" name="sieses.css" />
+        <h:outputScript library="js" name="jquery-2.1.1.min.js" />
+        <h:outputScript library="js" name="jies.js" />
+
+        <f:metadata>
+            <f:viewParam name="id" value="#{hata.parametreKayitID}" />
+            <f:viewParam name="pid" value="#{hata.parametreProjeID}" />
+        </f:metadata>
+
+        <h:form>
+            <div id="header">
+                <section class="ust_menu_1" id="baslik">
+                    <nav class="cl-effect-1">
+                        <span>Görev Ekle</span>
+                    </nav>
+                </section>
+            </div>
+
+            <br />
+
+            <div id="gorevekle_div">
+                <table id="gorevekle_table" class="ontanimliTable">
+                    <tr align="center"><td><div class="ontanimliBicim ontanimliYaziBoyu ontanimliEtkinEleman"><h:outputText value="#{hata.gorevBasligi}"/></div></td></tr>
+                    <!--<tr align="center"><td><h:inputText id="gorevekle_it_proje_adi" class="ontanimliBicim ontanimliYaziBoyu girisInputEtkisiz" onblur="onBlur(7)" onfocus="onFocus(7)" value="#{hata.gorevBasligi}" autocomplete="off"/></td></tr>-->
+                    <tr align="center"><td><h:inputTextarea id="gorevekle_ita_aciklama" class="ontanimliBicim aciklamaYazi ontanimliEtkisizEleman" onblur="onBlur(8)" onfocus="onFocus(8)" value="#{hata.gorevAciklamasi}" /></td></tr>
+                    <tr align="center"><td><h:commandButton class="ontanimliBicim ontanimliYaziBoyu ontanimliDugme" value="Kaydet" action="#{hata.kaydetGorev()}"></h:commandButton></td></tr>
+                </table>
+            </div>
+
+        </h:form>
+    </h:body>
+</html>

@@ -1,0 +1,564 @@
+/** * Eric Meyer's Reset CSS v2.0 (http://meyerweb.com/eric/tools/css/reset/) * http://cssreset.com */html, body, div, span, applet, object, iframe,h1, h2, h3, h4, h5, h6, p, blockquote, pre,a, abbr, acronym, address, big, cite, code,del, dfn, em, img, ins, kbd, q, s, samp,small, strike, strong, sub, sup, tt, var,b, u, i, center,dl, dt, dd, ol, ul, li,fieldset, form, label, legend,table, caption, tbody, tfoot, thead, tr, th, td,article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary,time, mark, audio, video{margin: 0;padding: 0;border: 0;font-size: 100%;font: inherit;vertical-align: baseline;}/* HTML5 display-role reset for older browsers */article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section{display: block;}body{line-height: 1;}ol, ul{list-style: none;}blockquote, q{quotes: none;}blockquote:before, blockquote:after,q:before, q:after{content: '';content: none;}table{border-collapse: collapse;border-spacing: 0;}
+
+@font-face 
+{
+    font-family: 'pt_sansregular';    
+    src: url("#{resource['font/PTS55F-webfont.eot']}");
+    src: url("#{resource['font/PTS55F-webfont.eot?#iefix']}") format('embedded-opentype'),
+        url("#{resource['font/PTS55F-webfont.woff']}") format('woff'),
+        url("#{resource['font/PTS55F-webfont.ttf']}") format('truetype'),
+        url("#{resource['font/PTS55F-webfont.svg#pt_sansregular']}") format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+*
+{
+    font-family: 'pt_sansregular' !important;
+}
+
+html
+{
+    overflow: scroll;//kaydırma çubukları sürekli gözükecek
+}
+
+/*ustMenu*/
+nav span 
+{
+    position: relative;
+    display: inline-block;
+    margin: 15px 25px;
+    outline: none;
+    color: #fff;
+    text-decoration: none;
+    letter-spacing: 1px;
+    font-weight: 400;
+    text-shadow: 0 0 1px rgba(255,255,255,0.3);
+    cursor: default;
+    z-index: 2;
+}
+
+nav span:hover,
+nav span:focus 
+{
+    outline: none;
+}
+
+.cl-effect-1 span::before,
+.cl-effect-1 span::after 
+{
+    display: inline-block;
+    opacity: 0;
+    -webkit-transition: -webkit-transform 0.3s, opacity 0.2s;
+    -moz-transition: -moz-transform 0.3s, opacity 0.2s;
+    transition: transform 0.3s, opacity 0.2s;
+}
+
+.cl-effect-1 span::before 
+{
+    margin-right: 10px;
+    content: '[';
+    -webkit-transform: translateX(30px);
+    -moz-transform: translateX(30px);
+    transform: translateX(30px);
+}
+
+.cl-effect-1 span::after 
+{
+    margin-left: 10px;
+    content: ']';
+    -webkit-transform: translateX(-20px);
+    -moz-transform: translateX(-20px);
+    transform: translateX(-20px);
+}
+
+.cl-effect-1 span:hover::before,
+.cl-effect-1 span:hover::after,
+.cl-effect-1 span:focus::before,
+.cl-effect-1 span:focus::after 
+{
+    opacity: 1;
+    -webkit-transform: translateX(0px);
+    -moz-transform: translateX(0px);
+    transform: translateX(0px);
+}
+
+.ust_menu_1 
+{
+    background: #435a6b;
+    position: fixed;
+    width: 100%;
+    font-size: 2em;
+    text-align: center;
+    -webkit-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+    z-index: 2;
+}
+
+.ust_menu_2 
+{
+    background: #b6a534;
+    position: fixed;
+    width: 100%;
+    font-size: 1.35em;
+    box-shadow: 0px 0px 5px 5px #888888;
+    z-index: 2;
+}
+/*ustmenu*/
+
+/*kayan menü*/
+.wrapper-dropdown-3 
+{   
+    border-radius: 3px;
+    border-width: 0px;
+    margin: 10px;
+    padding: 10px;
+    box-shadow: 0px 0px 15px #888888;
+    color: rgb(0, 102, 0);
+    text-shadow: 0 0 1px rgba(0, 102, 0, 0.5);
+    cursor: pointer;
+    position: relative;
+    width: 200px;
+}
+
+.wrapper-dropdown-3:hover
+{
+    box-shadow: 0px 0px 30px 5px #006600;
+    -webkit-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+}
+
+.wrapper-dropdown-3:after 
+{
+    content: "\25BC";
+    position: absolute;
+    right: 15px;
+}
+
+.wrapper-dropdown-3 .dropdown 
+{
+    /* Size & position */
+    position: absolute;
+    top: 140%;
+    left: 0;
+    right: 0;
+
+    /* Styles */
+    background: white;
+    border-radius: inherit;
+    border: 1px solid rgba(0,0,0,0.17);
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    font-weight: normal;
+    -webkit-transition: all 0.1s ease-in;
+    transition: all 0.1s ease-in;
+    list-style: none;
+
+    /* Hiding */
+    z-index: -1;
+    opacity: 0;
+    pointer-events: none;
+    display: none;
+}
+
+.wrapper-dropdown-3 .dropdown:after 
+{
+    content: "";
+    width: 0;
+    height: 0;
+    position: absolute;
+    bottom: 100%;
+    right: 15px;
+    border-width: 0 6px 6px 6px;
+    border-style: solid;
+    border-color: #fff transparent;    
+}
+
+.wrapper-dropdown-3 .dropdown:before 
+{
+    content: "";
+    width: 0;
+    height: 0;
+    position: absolute;
+    bottom: 100%;
+    right: 13px;
+    border-width: 0 8px 8px 8px;
+    border-style: solid;
+    border-color: rgba(0,0,0,0.1) transparent;    
+}
+
+.wrapper-dropdown-3 .dropdown li a 
+{
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: rgb(0, 102, 0);
+    text-shadow: 0 0 1px rgba(0, 102, 0, 0.5);
+    border-bottom: 1px solid #e6e8ea;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,1);
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -ms-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+}
+
+.wrapper-dropdown-3 .dropdown li:first-of-type a 
+{
+    border-radius: 7px 7px 0 0;
+}
+
+.wrapper-dropdown-3 .dropdown li:last-of-type a 
+{
+    border: none;
+    border-radius: 0 0 7px 7px;
+}
+
+.wrapper-dropdown-3 .dropdown li:hover a 
+{
+    background: rgba(100, 100, 100, 0.5);
+}
+
+.wrapper-dropdown-3.active .dropdown 
+{
+    /*menüye tıklandı*/
+    opacity: 1;
+    pointer-events: auto;
+    display:inline;
+}
+
+.wrapper-dropdown-3.active:after 
+{
+    content: "\25B2";
+}
+
+.wrapper-dropdown-3.active
+{
+    z-index: 1;
+    background-color: rgb(0, 102, 0);
+    color: #fff;
+    text-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 0px 30px 5px #006600;
+}
+
+.gizli
+{
+    display: none;
+}
+
+.saydam
+{
+    opacity: 0;
+    z-index: -1;
+}
+/*kayan menü*/
+
+/*ontanmlilar*/
+.ontanimliBicim
+{
+    border-radius: 3px;
+    border-width: 0px;
+    padding-top: 10px;
+    padding-bottom:  10px;
+    box-shadow: 0px 0px 15px #888888;
+    text-align: center;
+    -webkit-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+}
+
+.ontanimliBicim:hover
+{
+    box-shadow: 0px 0px 30px 5px #006600;
+    -webkit-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+}
+
+.ontanimliDugme
+{
+    background-color: #fff;
+    color: rgb(0, 102, 0);
+    text-shadow: 0 0 1px rgba(0, 102, 0, 0.5);
+    cursor: pointer;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.ontanimliDugme:active
+{
+    transform: scale(0.9, 0.9);
+}
+
+.ontanimliYaziBoyu
+{
+    font-size: 25px;
+}
+
+.ontanimliTable th
+{
+    padding: 10px;
+}
+
+.ontanimliTable td
+{
+    padding: 10px;
+}
+
+.ontanimliEtkisizEleman
+{
+    color: rgb(215,215,215);
+    text-shadow: 0 0 1px rgba(215,215,215,0.5);
+    width: 100%;
+}
+
+.ontanimliEtkinEleman
+{
+    color: rgb(0, 102, 0);
+    text-shadow: 0 0 1px rgba(0, 102, 0, 0.5);
+    width: 100%;
+}
+/*ontanimlilar*/
+
+/*listele*/
+.listeleTable td,
+.listeleTable th
+{
+    padding: 5px;
+    color: yellowgreen;
+    border: 1px black solid;
+}
+
+.listeleTable tr
+{
+    -webkit-transition: all 0.4s ease;
+    -moz-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+}
+
+.listeleTable tr:hover 
+{ 
+    background: #FCF;
+
+    -webkit-transition: all 0.4s ease;
+    -moz-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+} 
+/*listele*/
+
+.yesilGolge
+{
+    box-shadow: 0px 0px 30px 5px #006600;
+}
+
+.aciklamaYazi
+{
+    font-size: 15px;
+    resize: none;
+}
+
+/*ayrinti.xhtml*/
+.ayrintiTableDegisiklik
+{
+    color: rgb(0, 102, 0);
+    text-shadow: 0 0 1px rgba(0, 102, 0, 0.3);
+    width: 100%;
+}
+
+.ayrintiAciklama
+{
+    text-align: center;
+    font-size: 15px;
+    resize: none;
+    color: rgb(0, 102, 0);
+    text-shadow: 0 0 1px rgba(0, 102, 0, 0.3);
+    width: 100%;
+    border-radius: 3px;
+    border-width: 0px;
+    padding-top: 10px;
+    padding-bottom:  10px;
+    box-shadow: 0px 0px 15px #888888;
+
+    -webkit-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+}
+
+.ayrintiAciklama:hover
+{
+    box-shadow: 0px 0px 30px 5px #006600;
+
+    -webkit-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+}
+
+.ayrintiSolDiv
+{
+    float: left;
+}
+
+.ayrintiSagDiv
+{
+    right:0;
+    position:fixed;
+}
+
+.ayrintiLinkEtkisiz
+{
+    margin-bottom: 1px;
+    border:solid 1px rgb(0, 102, 0);
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: rgb(0, 102, 0);
+    font-size: 25px;
+    text-shadow: 0 0 1px rgba(0, 102, 0, 0.5);
+
+    -webkit-transition: all 0.4s ease;
+    -moz-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+}
+
+.ayrintiLinkEtkin
+{
+    margin-bottom: 1px;
+    border:solid 1px rgb(0, 102, 0);
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: rgb(0, 102, 0);
+    background: yellowgreen;
+    font-size: 25px;
+    text-shadow: 0 0 1px rgba(0, 102, 0, 0.5);
+
+    -webkit-transition: all 0.4s ease;
+    -moz-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+}
+
+.ayrintiLinkEtkisiz:hover
+{
+    background: rgba(100, 100, 100, 0.5);
+}
+
+.ayrintiLinkEtkisiz:hover span
+{
+    display: none;
+}
+
+.ayrintiKaydet:hover:before
+{
+    content: "Kaydet";
+}
+
+.ayrintiSil:hover:before
+{
+    content: "Sil";
+}
+
+.ayrintiAyracDiv1 
+{
+    text-align:center;
+    display:table;
+}
+
+.ayrintiAyracDiv2
+{
+    display:table-cell;
+    vertical-align:middle;
+}
+
+.ayrintiAyracSpan 
+{
+    white-space:nowrap;
+    padding:15px;
+}
+/*ayrinti.xhtml*/
+
+#overlay_back 
+{ 
+    position   : absolute; 
+    top        : 0; 
+    left       : 0; 
+    width      : 100%; 
+    height     : 100%; 
+    background : #999; 
+    opacity    : 0.6; 
+    filter     : alpha(opacity=60); 
+    z-index    : 5;
+    display    : none;
+} 
+
+#overlay 
+{ 
+    position : absolute; 
+    top      : 0; 
+    left     : 0; 
+    width    : 100%; 
+    height   : 100%; 
+    z-index  : 10;
+    display  : none;
+} 
+
+.spinner
+{
+    width: 150px;
+    height: 130px;
+    text-align: center;
+    font-size: 16px;
+}
+
+.spinner > div 
+{
+    background-color: #46cb52;
+    height: 100%;
+    width: 16px;
+    display: inline-block;
+
+    -webkit-animation: stretchdelay 1.2s infinite ease-in-out;
+    animation: stretchdelay 1.2s infinite ease-in-out;
+}
+
+.spinner .rect2 
+{
+    -webkit-animation-delay: -1.1s;
+    animation-delay: -1.1s;
+}
+
+.spinner .rect3 
+{
+    -webkit-animation-delay: -1.0s;
+    animation-delay: -1.0s;
+}
+
+.spinner .rect4 
+{
+    -webkit-animation-delay: -0.9s;
+    animation-delay: -0.9s;
+}
+
+.spinner .rect5 
+{
+    -webkit-animation-delay: -0.8s;
+    animation-delay: -0.8s;
+}
+
+@-webkit-keyframes stretchdelay 
+{
+    0%, 40%, 100% { -webkit-transform: scaleY(0.4) }  
+    20% { -webkit-transform: scaleY(1.0) }
+}
+
+@keyframes stretchdelay 
+{
+    0%, 40%, 100% 
+    { 
+        transform: scaleY(0.4);
+        -webkit-transform: scaleY(0.4);
+    }  20% 
+    { 
+        transform: scaleY(1.0);
+        -webkit-transform: scaleY(1.0);
+    }
+}
+

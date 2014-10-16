@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body id="ayrinti_body">
+
+        <f:metadata>
+            <f:viewParam name="id" value="#{hata.parametreKayitID}" />
+            <f:viewParam name="pid" value="#{hata.parametreProjeID}" />
+        </f:metadata>
+
+        <h:outputStylesheet library="css" name="sieses.css" />
+        <h:outputScript library="js" name="jquery-2.1.1.min.js" />
+        <h:outputScript library="js" name="jies.js" />
+
+        <h:form id="formAyrinti">
+            <div id="header">
+                <section class="ust_menu_1" id="baslik">
+                    <nav class="cl-effect-1">
+                        <span id="bas">#{hata.ayrintiBaslik}</span>
+                    </nav>
+                </section>
+            </div>
+
+            <div id="ayrinti_div_ayrinti" class="ayrintiSolDiv">
+                <table id="ayrinti_table">
+                    <tr align="center">
+                        <td><h:inputTextarea id="ayrinti_ita" class="ayrintiAciklama " value="#{hata.ayrintiAciklama}" readonly="true" /></td>
+                    </tr>
+                </table>
+
+                <br /><br /><br />
+                <div id="ayrinti_ayrac1" class="ayrintiAyracDiv1">
+                    <div id="ayrinti_ayrac2" class="ayrintiAyracDiv2"><hr noshade="noshade"/></div>
+                    <c:if test="#{hata.ayrintiTur == hata.TUR_HATA}">
+                        <span class="ayrintiAyracSpan">Hata Etkinliği</span>
+                    </c:if>
+                    <c:if test="#{hata.ayrintiTur == hata.TUR_GOREV}">
+                        <span class="ayrintiAyracSpan">Görev Etkinliği</span>
+                    </c:if>
+                    <div id="ayrinti_ayrac3" class="ayrintiAyracDiv2"><hr noshade="noshade"/></div>
+                </div>
+                <br />
+
+                <table id="degisiklik_table" class="ayrintiTableDegisiklik"><!-- durum degisikliklerinin html ye ekliyor -->
+                    <c:forEach items="${hata.listeDegisikliklarDurum}" var="projeKayitEtkinlik" varStatus="i">
+                        <tr>
+                            <td>
+                                <h:outputLabel value="#{projeKayitEtkinlik.tarih} --> #{projeKayitEtkinlik.durum}" />
+                            </td>
+                        </tr>
+                    </c:forEach>
+                </table>
+            </div>
+
+            <div id="ayrinti_div_durum" class="ayrintiSagDiv">
+                <table id="ayrinti_table_durum" >
+                    <c:forEach items="${hata.listeAyrintiKayitDurumlari}" var="kayitDurumu" varStatus="i"><!--etkin olan durumu bulup rengini değiştiriyor-->
+                        <c:choose>
+                            <c:when test="#{i.index == hata.kayitSeciliDurum}">
+                                <tr>
+                                    <td>
+                                        <h:commandLink id="ayrintiLink#{i.index}" class="ayrintiLinkEtkin" value="#{kayitDurumu}" onclick="seciliDurumuDegistir('#{i.index}');" >
+                                            <f:ajax execute="@form" render="@none" />
+                                        </h:commandLink>
+                                    </td>
+                                </tr>
+                            </c:when>
+                            <c:otherwise>
+                                <tr>
+                                    <td>
+                                        <h:commandLink id="ayrintiLink#{i.index}" class="ayrintiLinkEtkisiz" value="#{kayitDurumu}" onclick="seciliDurumuDegistir('#{i.index}');" >
+                                            <f:ajax execute="@form" render="@none" />
+                                        </h:commandLink>
+                                    </td>
+                                </tr>
+                            </c:otherwise>
+                        </c:choose>
+                    </c:forEach>
+
+                    <tr><td><br /></td></tr>
+                    <tr align="center">
+                        <td>
+                            <h:commandLink class="ayrintiLinkEtkisiz ayrintiSil" action="#{hata.ayrintiSil()}" onclick="return silmeOnayiGosterAyrinti('#{hata.ayrintiBaslik}')">
+                                <span>&#10060;</span>
+                            </h:commandLink>
+                        </td>
+                    </tr>
+                    <tr align="center">
+                        <td>
+                            <h:commandLink class="ayrintiLinkEtkisiz ayrintiKaydet" action="#{hata.ayrintiKaydet()}" >
+                                <span>&#10004;</span>
+                            </h:commandLink>
+                        </td>
+                    </tr>
+                </table>
+                <h:inputText class="gizli" id="seciliDurum" /><!--secili olan durumun id si buraya yazılıyor kaydet fonksiyonu id yi buradan alıyor-->
+            </div>
+        </h:form>        
+    </h:body>
+</html>

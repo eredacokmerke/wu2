@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body id="listele_body">
+
+        <h:outputStylesheet library="css" name="sieses.css" />
+        <h:outputScript library="js" name="jquery-2.1.1.min.js" />
+        <h:outputScript library="js" name="jies.js" />
+        <h:outputStylesheet library="css" name="jquery.dynatable.css" />
+        <h:outputScript library="js" name="jquery.dynatable.js" />
+
+        <f:metadata>
+            <f:viewParam name="pid" value="#{hata.parametreProjeID}" />
+        </f:metadata>
+
+        <h:form>
+            <div id="header">
+                <section class="ust_menu_1" id="baslik">
+                    <nav class="cl-effect-1">
+                        <c:if test="#{hata.listelenecekTur == hata.TUR_GOREV}">
+                            <span>Görev Etkinlikleri</span>
+                        </c:if>
+                        <c:if test="#{hata.listelenecekTur == hata.TUR_HATA}">
+                            <span>Hata Etkinlikleri</span>
+                        </c:if>
+                        <c:if test="#{hata.listelenecekTur == hata.TUR_HEPSI}">
+                            <span>Proje Etkinlikleri</span>
+                        </c:if>
+                    </nav>
+                </section>
+            </div>
+
+            <br />
+
+            <div id="listele_div">
+                <table id="listele_table" class="listeleTable">
+                    <thead>
+                        <tr>
+                            <th>Kod</th>
+                            <th>Tarih</th>
+                            <th>Durum</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <c:forEach items="${hata.listeDegisikliklerDurumHepsi}" var="etkinlikler" varStatus="i">
+                            <tr>
+                                <td><h:link value="#{etkinlikler.kod}" style="text-decoration: none;" outcome="araf.xhtml?id1=#{etkinlikler.kod}" target="_blank" /></td>
+                                <td><h:outputLabel value="#{etkinlikler.tarih}" /></td>
+                                <td><h:outputLabel value="#{etkinlikler.durum}" /></td>
+                            </tr>
+                        </c:forEach>
+                    </tbody>
+                </table>
+            </div>
+        </h:form>
+    </h:body>
+</html>
