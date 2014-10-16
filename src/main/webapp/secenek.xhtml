@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body id="secenek_body">
+
+        <h:outputStylesheet library="css" name="sieses.css" />
+        <h:outputScript library="js" name="jquery-2.1.1.min.js" />
+        <h:outputScript library="js" name="jies.js" />
+
+        <h:form id="formSecenek">
+            <div id="header">
+                <section class="ust_menu_1" id="baslik">
+                    <nav class="cl-effect-1">
+                        <span>wa2</span>
+                    </nav>
+                </section>
+            </div>
+
+            <br />
+
+            <div id="secenek_div">
+                <table id="secenek_table">
+                    <tr>
+                        <td>
+                            <div id="ddProje" class="wrapper-dropdown-3 ontanimliYaziBoyu">
+                                <span>Projeler</span>
+                                <ul class="dropdown">
+                                    <li>
+                                        <h:commandLink action="#{hata.ekleProje()}" value="Proje Ekle" />
+                                    </li>
+                                    <li>
+                                        <h:commandLink action="#{hata.butunProjeler()}" value="Bütün Projeler">
+                                            <f:ajax execute="@form" render="@none" />
+                                        </h:commandLink>
+                                    </li>
+                                    <c:forEach items="${hata.listeProje}" var="proje" varStatus="i"><!-- listeproje içindeki proje isimlerini html ye ekliyor -->
+                                        <li>
+                                            <h:commandLink value="#{proje.projeAdi}" action="#{hata.secilenProjeyiGetir(i.index)}">
+                                                <f:ajax execute="@form" render="@none" />
+                                            </h:commandLink>
+                                        </li>
+                                    </c:forEach>
+                                </ul>
+                            </div> 
+                        </td>
+                        <td>
+                            <div id="ddGorev" class="wrapper-dropdown-3 ontanimliYaziBoyu gizli">
+                                <span>Görevler</span>
+                                <ul class="dropdown">
+                                    <li><h:commandLink action="#{hata.ekleGorev()}" value="Yeni Görev" target="_blank" /></li>
+                                    <li><h:commandLink action="#{hata.listeleKayitlar(hata.TUR_GOREV, hata.KAYIT_YENI)}" value="Etkin Görevler" target="_blank" /></li>
+                                    <li><h:commandLink action="#{hata.listeleKayitlar(hata.TUR_GOREV, hata.KAYIT_TAMAMLANAN)}" value="Biten Görevler" target="_blank" /></li>
+                                    <li><h:commandLink action="#{hata.listeleKayitlar(hata.TUR_GOREV, hata.KAYIT_HEPSI)}" value="Bütün Görevler" target="_blank" /></li>
+                                    <li><h:commandLink action="#{hata.listeleEtkinlikler(hata.TUR_GOREV)}" value="Görev Etkinlikleri" target="_blank" /></li>
+                                </ul>
+                            </div> 
+                        </td>
+                        <td>
+                            <div id="ddHata" class="wrapper-dropdown-3 ontanimliYaziBoyu gizli">
+                                <span>Hatalar</span>
+                                <ul class="dropdown">
+                                    <li><h:commandLink action="#{hata.ekleHata()}" value="Yeni Hata" target="_blank" /></li>
+                                    <li><h:commandLink action="#{hata.listeleKayitlar(hata.TUR_HATA, hata.KAYIT_YENI)}" value="Etkin Hatalar" target="_blank" /></li>
+                                    <li><h:commandLink action="#{hata.listeleKayitlar(hata.TUR_HATA, hata.KAYIT_TAMAMLANAN)}" value="Çözülen Hatalar" target="_blank" /></li>
+                                    <li><h:commandLink action="#{hata.listeleKayitlar(hata.TUR_HATA, hata.KAYIT_HEPSI)}" value="Bütün Hatalar" target="_blank" /></li>
+                                    <li><h:commandLink action="#{hata.listeleEtkinlikler(hata.TUR_HATA)}" value="Hata Etkinlikleri" target="_blank" /></li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div id="ddProjeSecenekleri" class="wrapper-dropdown-3 ontanimliYaziBoyu saydam">
+                                <span>Seçenekler</span>
+                                <ul class="dropdown">
+                                    <li><h:commandLink action="#{hata.deneme()}" value="Ayrıntılar" /></li>
+                                    <li><h:commandLink action="#{hata.silProje()}" value="Sil" onclick="return silmeOnayiGosterProje()" /></li> 
+                                    <li><h:commandLink action="#{hata.listeleProjeEtkinlikleri()}" value="Etkinlikler" target="_blank"/></li>
+                                    <li><h:commandLink action="#{hata.listeleKayitlar(hata.TUR_HEPSI, hata.KAYIT_HEPSI)}" value="Kayıtlar" target="_blank"/></li>
+                                    <li id="secenekHatalar"><h:commandLink action="#{hata.listeleKayitlar(hata.TUR_HATA, hata.KAYIT_HEPSI)}" value="Hatalar" target="_blank"/></li>
+                                    <li id="secenekGorevler"><h:commandLink action="#{hata.listeleKayitlar(hata.TUR_GOREV, hata.KAYIT_HEPSI)}" value="Görevler" target="_blank"/></li>
+                                </ul>
+                            </div> 
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+        </h:form>
+    </h:body>
+</html>

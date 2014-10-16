@@ -1,0 +1,51 @@
+<pretty-config xmlns="http://ocpsoft.org/schema/rewrite-config-prettyfaces" 
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+               xsi:schemaLocation="http://ocpsoft.org/schema/rewrite-config-prettyfaces
+                      http://ocpsoft.org/xml/ns/prettyfaces/rewrite-config-prettyfaces.xsd">
+
+    <url-mapping id="secenek">
+        <pattern value="/secenek" />
+        <view-id value="faces/secenek.xhtml" />
+    </url-mapping>
+    
+    <url-mapping id="gorevekle">
+        <pattern value="/gorevekle" />
+        <view-id value="/faces/gorevekle.xhtml" />
+    </url-mapping>
+    
+    <url-mapping id="hataekle">
+        <pattern value="/hataekle" />
+        <view-id value="/faces/hataekle.xhtml" />
+    </url-mapping>
+    
+    <url-mapping id="listeleEtkinlik">
+        <pattern value="/etkinlikler" />
+        <view-id value="/faces/listeleEtkinlik.xhtml" />
+    </url-mapping>
+    
+    <url-mapping id="projeekle">
+        <pattern value="/projeekle" />
+        <view-id value="/faces/projeekle.xhtml" />
+    </url-mapping>
+    
+    <url-mapping id="listele">
+        <pattern value="/listele" />
+        <view-id value="/faces/listele.xhtml" />
+    </url-mapping>
+    
+    <url-mapping id="ayrinti">
+        <pattern value="/ayrinti" />
+        <view-id value="faces/ayrinti.xhtml" />
+    </url-mapping>
+    
+    <url-mapping id="giris">
+        <pattern value="/giris" />
+        <view-id value="/faces/giris.xhtml" />
+    </url-mapping>
+    
+    <url-mapping id="araf">
+        <pattern value="/araf" />
+        <view-id value="/faces/araf.xhtml" />
+    </url-mapping>
+    
+</pretty-config>

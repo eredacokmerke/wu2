@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body id="listele_body">
+
+        <h:outputStylesheet library="css" name="sieses.css" />
+        <h:outputScript library="js" name="jquery-2.1.1.min.js" />
+        <h:outputScript library="js" name="jies.js" />
+        <h:outputStylesheet library="css" name="jquery.dynatable.css" />
+        <h:outputScript library="js" name="jquery.dynatable.js" />
+
+        <f:metadata>
+            <f:viewParam name="pid" value="#{hata.parametreProjeID}" />
+        </f:metadata>
+
+        <h:form>
+            <div id="header">
+                <section class="ust_menu_1" id="baslik">
+                    <nav class="cl-effect-1">
+                        <c:if test="#{hata.listelenecekTur == hata.TUR_GOREV}">
+                            <c:if test="#{hata.listelenecekDurum == hata.KAYIT_HEPSI}"><span>Görevler</span></c:if>
+                            <c:if test="#{hata.listelenecekDurum == hata.KAYIT_TAMAMLANAN}"><span>Tamamlanan Görevler</span></c:if>
+                            <c:if test="#{hata.listelenecekDurum == hata.KAYIT_YENI}"><span>Etkin Görevler</span></c:if>
+                        </c:if>
+                        <c:if test="#{hata.listelenecekTur == hata.TUR_HATA}">
+                            <c:if test="#{hata.listelenecekDurum == hata.KAYIT_HEPSI}"><span>Hatalar</span></c:if>
+                            <c:if test="#{hata.listelenecekDurum == hata.KAYIT_TAMAMLANAN}"><span>Tamamlanan Hatalar</span></c:if>
+                            <c:if test="#{hata.listelenecekDurum == hata.KAYIT_YENI}"><span>Etkin Hatalar</span></c:if>
+                        </c:if>
+                        <c:if test="#{hata.listelenecekTur == hata.TUR_HEPSI}">
+                            <span>Kayıtlar</span>
+                        </c:if>
+                    </nav>
+                </section>
+            </div>
+
+            <br />
+
+            <div id="listele_div">
+                <table id="listele_table" class="listeleTable">
+                    <thead>
+                        <tr>
+                            <th>Kod</th>
+                            <th>Başlık</th>
+                            <th>Tarih</th>
+                            <c:if test="#{hata.listelenecekDurum == hata.KAYIT_HEPSI}"><!--listede sadece bir duruma ait kayıtlar varsa durum sutunu gereksiz-->
+                                <th>Durum</th>
+                            </c:if>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <c:forEach items="${hata.listeKayitlar}" var="kayitlar" varStatus="i">
+                            <tr>
+                                <td><h:link value="#{kayitlar.kayitKodu}" style="text-decoration: none;" outcome="araf.xhtml?id1=#{kayitlar.kayitKodu}" target="_blank" /></td>
+                                <td><h:outputLabel value="#{kayitlar.kayitAciklamasi}" /></td>
+                                <td><h:outputLabel value="#{kayitlar.kayitTarihi}" /></td>
+                                <c:if test="#{hata.listelenecekDurum == hata.KAYIT_HEPSI}">
+                                    <td><h:outputLabel value="#{kayitlar.kayitDurumuYazi}" /></td>
+                                </c:if>
+                            </tr>
+                        </c:forEach>
+                    </tbody>
+                </table>
+            </div>
+        </h:form>
+    </h:body>
+</html>
