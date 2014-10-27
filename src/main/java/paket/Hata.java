@@ -21,10 +21,10 @@ public class Hata implements Serializable
 {
 
     private final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-    //private final String DB_URL = "jdbc:mysql://ec2-50-19-213-178.compute-1.amazonaws.com:3306/veritabani_wp2";
-    //private final String USER = "oguz_wp2";
-    //private final String PASS = "abdullah";
-    private final String DB_URL = "jdbc:mysql://"+System.getenv("OPENSHIFT_MYSQL_DB_HOST")+":"+System.getenv("OPENSHIFT_MYSQL_DB_PORT")+"/wu2";
+    //private final String DB_URL = "jdbc:mysql://127.0.0.1:3306/wu2?characterEncoding=utf8";
+    //private final String USER = "adminc6MEd49";
+    //private final String PASS = "REuW661QEdPy";
+    private final String DB_URL = "jdbc:mysql://"+System.getenv("OPENSHIFT_MYSQL_DB_HOST")+":"+System.getenv("OPENSHIFT_MYSQL_DB_PORT")+"/wu2?characterEncoding=utf8";
     private final String USER = System.getenv("OPENSHIFT_MYSQL_DB_USERNAME");
     private final String PASS = System.getenv("OPENSHIFT_MYSQL_DB_PASSWORD");
 
@@ -1057,6 +1057,8 @@ public class Hata implements Serializable
                 pst.setString(5, getParametreProjeID());
                 pst.setInt(6, getHataNumarasi());
                 int sonuc = pst.executeUpdate();
+                
+                System.out.println("hata : "+ pst.toString());
 
                 PreparedStatement pst2 = conn.prepareStatement("insert into tbl_etkinlik_hata(hata_kod, durum, tarih, proje_id) values(?, ?, ?, ?)");
                 pst2.setString(1, getParametreKayitID());
