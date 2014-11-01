@@ -21,9 +21,6 @@ public class Hata implements Serializable
 {
 
     private final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-    //private final String DB_URL = "jdbc:mysql://127.0.0.1:3306/wu2?characterEncoding=utf8";
-    //private final String USER = "adminc6MEd49";
-    //private final String PASS = "REuW661QEdPy";
     private final String DB_URL = "jdbc:mysql://"+System.getenv("OPENSHIFT_MYSQL_DB_HOST")+":"+System.getenv("OPENSHIFT_MYSQL_DB_PORT")+"/wu2?characterEncoding=utf8";
     private final String USER = System.getenv("OPENSHIFT_MYSQL_DB_USERNAME");
     private final String PASS = System.getenv("OPENSHIFT_MYSQL_DB_PASSWORD");
