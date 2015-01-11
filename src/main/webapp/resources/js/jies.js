@@ -171,7 +171,7 @@ var secenekMarginHesapla2 = function ()//secenek ekranında bütün dropdown men
     dropdown_menu_proje_secenekler.removeClass("saydam");
 
     MENULER_VAR = 1;
-    DROPDOWNMENU_SECENEK_OBJECT.baslik.text("Seçenekler");
+    //DROPDOWNMENU_SECENEK_OBJECT.baslik.text("Seçenekler");
 };
 
 var secenekMarginHesapla3 = function ()//secenek ekranında sadece proje menüsü var
@@ -205,7 +205,7 @@ var secenekMarginHesapla3 = function ()//secenek ekranında sadece proje menüs�
         secenek_div.css({"margin-top": marginUst - 30 + "px", "margin-left": marginSol + "px"});
         MENULER_VAR = 0;
     }
-    DROPDOWNMENU_SECENEK_OBJECT.baslik.text("Seçenekler");
+    //DROPDOWNMENU_SECENEK_OBJECT.baslik.text("Seçenekler");
 };
 
 var projeEkleMarginHesapla = function ()
@@ -228,7 +228,6 @@ var projeEkleMarginHesapla = function ()
 
 var hataEkleMarginHesapla = function ()
 {
-
     var hataekle_table = $(HATAEKLE_TABLE);
     var hataekle_div = $(HATAEKLE_DIV);
     var pencere = $(window);
@@ -360,6 +359,7 @@ $(window).load(function ()//sayfa yüklendi
     }
     else if ($(SECENEK_BODY).length > 0)//secenek.xhtml sayfasında
     {
+        metal_init();
         secenekMarginHesapla();
     }
     else if ($(PROJEEKLE_BODY).length > 0)//projeekle.xhtml sayfasında
@@ -587,13 +587,12 @@ var onBlur = function (id)//focus bileşenden çıktı
  };
  */
 
+
 function DropDown(el, id)//secenek sayfasındaki dropdown menüleri açıyor
 {
     this.id = id;
     this.dd = el;//dropdown menünün kendisi
-    this.baslik = this.dd.children('span');//menünün ilk başlığı
-    this.secenek = this.dd.find('ul.dropdown > li');//dropdown menü içindeki seçenekler
-    this.yazi = '';//menüde seçim yapıldıktan sonra gözüken yazı
+    this.secenek = this.dd.find('ul.metal-items > li');//dropdown menü içindeki seçenekler
     this.index = -1;//menüde seçim yapılan elemanın indeksi
     this.initEvents();
 }
@@ -603,29 +602,19 @@ DropDown.prototype = {
     {
         var objMenu = this;//dropdown menü nesnesi
 
+        /*
         objMenu.dd.on('click', function (event)//dropdown menüye tıklandı
         {
-            if (objMenu.id === DROPDOWNMENU_PROJE_ID)//proje dropdown menüsüne tıklanınca açık olan menüler kapansın
-            {
-                $(DROPDOWNMENU_PROJE_SECENEKLER).removeClass('active');
-                $(DROPDOWNMENU_HATA).removeClass('active');
-                $(DROPDOWNMENU_GOREV).removeClass('active');
-            }
-            $(this).toggleClass('active');
-            return false;
         });
+        */
 
         objMenu.secenek.on('click', function ()//menu seçeneğine tıklandı
         {
             var objSecenek = $(this);
-            objMenu.yazi = objSecenek.text();
             objMenu.index = objSecenek.index();
-            objMenu.baslik.text(objMenu.yazi);
 
-            if (objMenu.id === DROPDOWNMENU_PROJE_ID)//sadece proje menüsüne tıklandığında görsel değişiklik olsun
+            if (objMenu.id === DROPDOWNMENU_PROJE_ID)
             {
-                SECILI_PROJE_ADI = objSecenek.text();
-                DROPDOWNMENU_PROJE_INDEX_SECILI_PROJE = objSecenek.index();
                 if (objSecenek.index() === DROPDOWNMENU_PROJE_INDEX_BUTUN_PROJELER)//menünün ikinci satırında bütün projeler var.  buraya tıklanırsa menünün sola kaymasına gerek yok sadece seçenekler butonu gelecek
                 {
                     $(SECENEK_HATALAR).removeClass("gizli");//bütün projeler seçilirse secenek menüsünde hata ve görev çıksın
@@ -651,10 +640,6 @@ $(function ()
     new DropDown($(DROPDOWNMENU_HATA), DROPDOWNMENU_HATA_ID);
     new DropDown($(DROPDOWNMENU_PROJE), DROPDOWNMENU_PROJE_ID);
     DROPDOWNMENU_SECENEK_OBJECT = new DropDown($(DROPDOWNMENU_PROJE_SECENEKLER), DROPDOWNMENU_PROJE_SECENEKLER_ID);
-    $(document).click(function ()
-    {
-        $('.wrapper-dropdown-3').removeClass('active');
-    });
 });
 
 function seciliDurumuDegistir(secilenSatir)

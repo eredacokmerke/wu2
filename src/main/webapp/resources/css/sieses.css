@@ -1,4 +1,4 @@
-/** * Eric Meyer's Reset CSS v2.0 (http://meyerweb.com/eric/tools/css/reset/) * http://cssreset.com */html, body, div, span, applet, object, iframe,h1, h2, h3, h4, h5, h6, p, blockquote, pre,a, abbr, acronym, address, big, cite, code,del, dfn, em, img, ins, kbd, q, s, samp,small, strike, strong, sub, sup, tt, var,b, u, i, center,dl, dt, dd, ol, ul, li,fieldset, form, label, legend,table, caption, tbody, tfoot, thead, tr, th, td,article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary,time, mark, audio, video{margin: 0;padding: 0;border: 0;font-size: 100%;font: inherit;vertical-align: baseline;}/* HTML5 display-role reset for older browsers */article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section{display: block;}body{line-height: 1;}ol, ul{list-style: none;}blockquote, q{quotes: none;}blockquote:before, blockquote:after,q:before, q:after{content: '';content: none;}table{border-collapse: collapse;border-spacing: 0;}
+/** * Eric Meyer's Reset CSS v2.0 (http://meyerweb.com/eric/tools/css/reset/) * http://cssreset.com */html, body, div, span, applet, object, iframe,h1, h2, h3, h4, h5, h6, p, blockquote, pre,a, abbr, acronym, address, big, cite, code,del, dfn, em, img, ins, kbd, q, s, samp,small, strike, strong, sub, sup, tt, var,b, u, i, center,dl, dt, dd, ol, ul, li,fieldset, form, label, legend,table, caption, tbody, tfoot, thead, tr, th, td,article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary,time, mark, audio, video{margin: 0;padding: 0;border: 0;font-size: 100%;font: inherit;}/* HTML5 display-role reset for older browsers */article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section{display: block;}body{line-height: 1;}ol, ul{list-style: none;}blockquote, q{quotes: none;}blockquote:before, blockquote:after,q:before, q:after{content: '';content: none;}table{border-collapse: collapse;border-spacing: 0;}
 
 @font-face 
 {
@@ -105,140 +105,6 @@ nav span:focus
     z-index: 2;
 }
 /*ustmenu*/
-
-/*kayan menü*/
-.wrapper-dropdown-3 
-{   
-    border-radius: 3px;
-    border-width: 0px;
-    margin: 10px;
-    padding: 10px;
-    box-shadow: 0px 0px 15px #888888;
-    color: rgb(0, 102, 0);
-    text-shadow: 0 0 1px rgba(0, 102, 0, 0.5);
-    cursor: pointer;
-    position: relative;
-    width: 200px;
-}
-
-.wrapper-dropdown-3:hover
-{
-    box-shadow: 0px 0px 30px 5px #006600;
-    -webkit-transition: all 0.4s ease;
-    transition: all 0.4s ease;
-}
-
-.wrapper-dropdown-3:after 
-{
-    content: "\25BC";
-    position: absolute;
-    right: 15px;
-}
-
-.wrapper-dropdown-3 .dropdown 
-{
-    /* Size & position */
-    position: absolute;
-    top: 140%;
-    left: 0;
-    right: 0;
-
-    /* Styles */
-    background: white;
-    border-radius: inherit;
-    border: 1px solid rgba(0,0,0,0.17);
-    box-shadow: 0 0 5px rgba(0,0,0,0.1);
-    font-weight: normal;
-    -webkit-transition: all 0.1s ease-in;
-    transition: all 0.1s ease-in;
-    list-style: none;
-
-    /* Hiding */
-    z-index: -1;
-    opacity: 0;
-    pointer-events: none;
-    display: none;
-}
-
-.wrapper-dropdown-3 .dropdown:after 
-{
-    content: "";
-    width: 0;
-    height: 0;
-    position: absolute;
-    bottom: 100%;
-    right: 15px;
-    border-width: 0 6px 6px 6px;
-    border-style: solid;
-    border-color: #fff transparent;    
-}
-
-.wrapper-dropdown-3 .dropdown:before 
-{
-    content: "";
-    width: 0;
-    height: 0;
-    position: absolute;
-    bottom: 100%;
-    right: 13px;
-    border-width: 0 8px 8px 8px;
-    border-style: solid;
-    border-color: rgba(0,0,0,0.1) transparent;    
-}
-
-.wrapper-dropdown-3 .dropdown li a 
-{
-    display: block;
-    padding: 10px;
-    text-decoration: none;
-    color: rgb(0, 102, 0);
-    text-shadow: 0 0 1px rgba(0, 102, 0, 0.5);
-    border-bottom: 1px solid #e6e8ea;
-    box-shadow: inset 0 1px 0 rgba(255,255,255,1);
-    -webkit-transition: all 0.3s ease-out;
-    -moz-transition: all 0.3s ease-out;
-    -ms-transition: all 0.3s ease-out;
-    -o-transition: all 0.3s ease-out;
-    transition: all 0.3s ease-out;
-}
-
-.wrapper-dropdown-3 .dropdown li:first-of-type a 
-{
-    border-radius: 7px 7px 0 0;
-}
-
-.wrapper-dropdown-3 .dropdown li:last-of-type a 
-{
-    border: none;
-    border-radius: 0 0 7px 7px;
-}
-
-.wrapper-dropdown-3 .dropdown li:hover a 
-{
-    background: rgba(100, 100, 100, 0.5);
-}
-
-.wrapper-dropdown-3.active .dropdown 
-{
-    /*menüye tıklandı*/
-    opacity: 1;
-    pointer-events: auto;
-    display:inline;
-}
-
-.wrapper-dropdown-3.active:after 
-{
-    content: "\25B2";
-}
-
-.wrapper-dropdown-3.active
-{
-    z-index: 1;
-    background-color: rgb(0, 102, 0);
-    color: #fff;
-    text-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
-    box-shadow: 0px 0px 30px 5px #006600;
-}
 
 .gizli
 {
@@ -562,3 +428,98 @@ nav span:focus
     }
 }
 
+#secenek_table
+{
+    height: 72px;
+}
+
+.metal-div
+{
+    margin: 10px;
+}
+
+.metal-icerik-div
+{
+    height: 100%;
+}
+
+.metal-items-div 
+{
+    padding-top: 10px;
+}
+
+.metal-items 
+{
+    width: 200px;
+    border: solid 1px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    box-shadow: 0px 0px 15px #888888;
+    color: rgb(0, 102, 0);
+    text-shadow: 0 0 1px rgba(0, 102, 0, 0.5);
+    overflow: auto;
+    height: 200px;
+    background-color:white;
+    z-index: 1;
+    margin-top:10px;
+}
+
+.metal-items li a
+{
+    display: block;
+    color: rgb(0, 102, 0);
+    text-decoration: none;
+    border-bottom: solid 1px;
+    padding: 10px;
+}
+
+.metal-items li:hover
+{
+    background-color: grey;
+}
+
+.metal-input-div 
+{
+    border-radius: 3px;
+    border-width: 0px;
+    box-shadow: 0px 0px 15px #888888;
+    text-shadow: 0 0 1px rgba(0, 102, 0, 0.5);
+    cursor: pointer;
+    width: 200px;
+    height: 100%;
+}
+
+.metal-output-div 
+{
+    border-radius: 3px;
+    border-width: 0px;
+    box-shadow: 0px 0px 15px #888888;
+    text-shadow: 0 0 1px rgba(0, 102, 0, 0.5);
+    cursor: pointer;
+    width: 200px;
+    height: 100%;
+}
+
+.metal-input-div:hover 
+{
+    box-shadow: 0px 0px 30px 5px #006600;
+    -webkit-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+}
+
+.metal-input 
+{
+    border-width: 0px !important;
+    padding: 10px;
+    background-color: transparent;
+    color: rgb(0, 102, 0);
+    text-shadow: 0 0 1px rgba(0, 102, 0, 0.5);
+    font-size: 25px;
+    height: 100%;
+}
+
+.metal-pointer{
+  color: rgb(0, 102, 0);
+}

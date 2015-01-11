@@ -21,7 +21,7 @@ public class Hata implements Serializable
 {
 
     private final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-    private final String DB_URL = "jdbc:mysql://"+System.getenv("OPENSHIFT_MYSQL_DB_HOST")+":"+System.getenv("OPENSHIFT_MYSQL_DB_PORT")+"/wu2?characterEncoding=utf8";
+    private final String DB_URL = "jdbc:mysql://" + System.getenv("OPENSHIFT_MYSQL_DB_HOST") + ":" + System.getenv("OPENSHIFT_MYSQL_DB_PORT") + "/wu2?characterEncoding=utf8";
     private final String USER = System.getenv("OPENSHIFT_MYSQL_DB_USERNAME");
     private final String PASS = System.getenv("OPENSHIFT_MYSQL_DB_PASSWORD");
 
@@ -112,7 +112,6 @@ public class Hata implements Serializable
     {
         String ids;
         ids = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("id1");
-        System.out.println("id1 : " + ids);
         if (ids != null)
         {
             kayitAyrintisiniGetir(ids);
@@ -256,7 +255,7 @@ public class Hata implements Serializable
 
     public void ayrintiSil()
     {
-        System.out.println("ayrintiSil : kayit id : " + getParametreKayitID() + " projeid : " + getParametreProjeID());
+        //System.out.println("ayrintiSil : kayit id : " + getParametreKayitID() + " projeid : " + getParametreProjeID());
         String query1 = "";
         String query2 = "";
         if (getParametreKayitID().contains(HARF_GOREV))
@@ -327,6 +326,7 @@ public class Hata implements Serializable
                     }
                     catch (IOException e)
                     {
+                        System.out.println("hata 40 : " + e.getMessage());
                     }
                     //return "secenek.xhtml?faces-redirect=true";
                 }
@@ -334,24 +334,19 @@ public class Hata implements Serializable
                 {
                     setKullaniciAdi(KULLANICI_ADI);
                     setSifre(KULLANICI_SIFRESI);
-
-                    //return null;
                 }
             }
             catch (SQLException e)
             {
                 System.out.println("hata 9 : " + e.getMessage());
-                //return null;
             }
             catch (ClassNotFoundException e)
             {
                 System.out.println("hata 10 : " + e.getMessage());
-                //return null;
             }
         }
         else
         {
-            //return null;
         }
     }
 
@@ -1054,8 +1049,8 @@ public class Hata implements Serializable
                 pst.setString(5, getParametreProjeID());
                 pst.setInt(6, getHataNumarasi());
                 int sonuc = pst.executeUpdate();
-                
-                System.out.println("hata : "+ pst.toString());
+
+                System.out.println("hata 37 : " + pst.toString());
 
                 PreparedStatement pst2 = conn.prepareStatement("insert into tbl_etkinlik_hata(hata_kod, durum, tarih, proje_id) values(?, ?, ?, ?)");
                 pst2.setString(1, getParametreKayitID());
@@ -1068,12 +1063,12 @@ public class Hata implements Serializable
             }
             catch (SQLException e)
             {
-                System.out.println("hata 37 : " + e.getMessage());
+                System.out.println("hata 38 : " + e.getMessage());
                 return null;
             }
             catch (ClassNotFoundException e)
             {
-                System.out.println("hata 38 : " + e.getMessage());
+                System.out.println("hata 39 : " + e.getMessage());
                 return null;
             }
         }
