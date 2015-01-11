@@ -639,13 +639,6 @@ $(function ()
     new DropDown($(DROPDOWNMENU_HATA), DROPDOWNMENU_HATA_ID);
     new DropDown($(DROPDOWNMENU_PROJE), DROPDOWNMENU_PROJE_ID);
     DROPDOWNMENU_SECENEK_OBJECT = new DropDown($(DROPDOWNMENU_PROJE_SECENEKLER), DROPDOWNMENU_PROJE_SECENEKLER_ID);
-<<<<<<< HEAD
-=======
-    $(document).click(function ()
-    {
-        $('.wrapper-dropdown-3').removeClass('active');
-    });
->>>>>>> 4c5ece0c10404a10356439d8aa8d1a07dec1c56f
 });
 
 function seciliDurumuDegistir(secilenSatir)
