@@ -55,6 +55,12 @@ var PROJEEKLE_BODY = "#projeekle_body";
 var PROJEEKLE_INPUTTEXT_PROJE_ADI = "projeekle_it_proje_adi";
 var PROJEEKLE_INPUTTEXTAREA_ACIKLAMA = "projeekle_ita_aciklama";
 
+var PROJEAYRINTI_DIV = "#projeayrinti_div";
+var PROJEAYRINTI_TABLE = "#projeayrinti_table";
+var PROJEAYRINTI_BODY = "#projeayrinti_body";
+var PROJEAYRINTI_INPUTTEXT_PROJE_ADI = "projeayrinti_it_proje_adi";
+var PROJEAYRINTI_INPUTTEXTAREA_ACIKLAMA = "projeayrinti_ita_aciklama";
+
 var HATAEKLE_DIV = "#hataekle_div";
 var HATAEKLE_TABLE = "#hataekle_table";
 var HATAEKLE_BODY = "#hataekle_body";
@@ -301,6 +307,24 @@ var ayrintiMarginHesapla = function ()
     ayrinti_div_durum.css({"margin-top": USTMENU_YUKSEKLIK, "margin-right": marginSol + "px"});
 };
 
+var projeAyrintiMarginHesapla = function ()
+{
+    var projeekle_table = $(PROJEAYRINTI_TABLE);
+    var projeekle_div = $(PROJEAYRINTI_DIV);
+    var pencere = $(window);
+
+    var tarayiciEni = pencere.width();
+    projeekle_table.width(tarayiciEni / 1.5);
+
+    var elementEni = projeekle_table.width();
+    var marginSol = (tarayiciEni - elementEni) / 2;
+
+    var tarayiciBoyu = pencere.height();
+    projeekle_div.css({"margin-top": USTMENU_YUKSEKLIK, "margin-left": marginSol + "px"});
+
+    $("textarea[name$=" + PROJEAYRINTI_INPUTTEXTAREA_ACIKLAMA + "]").attr("rows", (tarayiciBoyu / 40));
+};
+
 $(window).resize(function ()//tarayıcı boyutu değişti
 {
     if ($(GIRIS_BODY).length > 0)//giris.xhtml sayfasında
@@ -331,6 +355,10 @@ $(window).resize(function ()//tarayıcı boyutu değişti
     else if ($(AYRINTI_BODY).length > 0)//ayrinti.xhtml sayfasında
     {
         ayrintiMarginHesapla();
+    }
+    else if ($(PROJEAYRINTI_BODY).length > 0)//projeayrinti.xhtml sayfasında
+    {
+        projeAyrintiMarginHesapla();
     }
 });
 
@@ -382,6 +410,10 @@ $(window).load(function ()//sayfa yüklendi
     else if ($(AYRINTI_BODY).length > 0)//ayrinti.xhtml sayfasında
     {
         ayrintiMarginHesapla();
+    }
+     else if ($(PROJEAYRINTI_BODY).length > 0)//projeayrinti.xhtml sayfasında
+    {
+        projeAyrintiMarginHesapla();
     }
 });
 

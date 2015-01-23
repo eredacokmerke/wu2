@@ -20,7 +20,7 @@
                     <tr>
                         <td>
                             <div id="ddProje" class="metal-div" metal-width="200">
-                                <div class="metal-input-div" metal-text="Choose..."></div>
+                                <div class="metal-input-div" metal-text="Proje"></div>
                                 <div class="metal-items-div">
                                     <ul class="metal-items">
                                         <li>
@@ -44,7 +44,7 @@
                         </td>
                         <td>
                             <div id="ddGorev" class="metal-div gizli" metal-width="200">
-                                <div class="metal-output-div" metal-text="Choose..."></div>
+                                <div class="metal-output-div" metal-text="Görevler"></div>
                                 <div class="metal-items-div">
                                     <ul class="metal-items">
                                         <li><h:commandLink action="#{hata.ekleGorev()}" value="Yeni Görev" target="_blank" /></li>
@@ -58,7 +58,7 @@
                         </td>
                         <td>
                             <div id="ddHata" class="metal-div gizli" metal-width="200">
-                                <div class="metal-output-div" metal-text="Choose..."></div>
+                                <div class="metal-output-div" metal-text="Hatalar"></div>
                                 <div class="metal-items-div">
                                     <ul class="metal-items">
                                         <li><h:commandLink action="#{hata.ekleHata()}" value="Yeni Hata" target="_blank" /></li>
@@ -74,10 +74,10 @@
                     <tr>
                         <td>
                             <div id="ddProjeSecenekleri" class="metal-div saydam" metal-width="200">
-                                <div class="metal-output-div" metal-text="Choose..."></div>
+                                <div class="metal-output-div" metal-text="Seçenekler"></div>
                                 <div class="metal-items-div">
                                     <ul class="metal-items">
-                                        <li><h:commandLink action="#{hata.deneme()}" value="Ayrıntılar" /></li>
+                                        <li><h:commandLink action="#{hata.projeAyrintisi()}" value="Ayrıntılar" /></li>
                                         <li><h:commandLink action="#{hata.silProje()}" value="Sil" onclick="return silmeOnayiGosterProje()" /></li> 
                                         <li><h:commandLink action="#{hata.listeleProjeEtkinlikleri()}" value="Etkinlikler" target="_blank"/></li>
                                         <li><h:commandLink action="#{hata.listeleKayitlar(hata.TUR_HEPSI, hata.KAYIT_HEPSI)}" value="Kayıtlar" target="_blank"/></li>

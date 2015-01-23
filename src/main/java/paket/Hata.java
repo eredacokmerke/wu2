@@ -199,7 +199,7 @@ public class Hata implements Serializable
             }
             catch (IOException e)
             {
-                System.out.println("RETURN 1 hata : " + e.getMessage());
+                System.out.println("hata 46: " + e.getMessage());
             }
         }
     }
@@ -255,8 +255,6 @@ public class Hata implements Serializable
 
     public void ayrintiSil()
     {
-        //System.out.println("ayrintiSil : kayit id : " + getParametreKayitID() + " projeid : " + getParametreProjeID());
-        
         String query1 = "";
         String query2 = "";
         if (getParametreKayitID().contains(HARF_GOREV))
@@ -922,13 +920,71 @@ public class Hata implements Serializable
         }
     }
 
-    /*
-     public String listeleProjeKayitlari()
-     {
-     return listeleKayitlar(TUR_HEPSI);
-     }
-     */
+    public String projeAyrintisi()//projenin ayrintilarini getirir
+    {
+        try
+        {
+            Class.forName(JDBC_DRIVER);
+            Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            PreparedStatement pst = conn.prepareStatement("select isim, aciklama from tbl_proje where id=?");
+            pst.setInt(1, getProjeID());
+            ResultSet rs = pst.executeQuery();
+            if (rs.next())
+            {
+                setProjeAdi(rs.getString("isim"));
+                setProjeAciklamasi(rs.getString("aciklama"));
+            }
+        }
+        catch (SQLException e)
+        {
+            System.out.println("hata 42 : " + e.getMessage());
+        }
+        catch (ClassNotFoundException e)
+        {
+            System.out.println("hata 43 : " + e.getMessage());
+        }
+        return "projeAyrinti.xhtml?faces-redirect=true";
+    }
 
+    public String kaydetProjeAyrintisi()//proje ayrinitisi ekranında kaydet 
+    {
+        if (!getProjeAdi().isEmpty() && !getProjeAdi().equals(PROJE_ADI))
+        {
+            try
+            {
+                if (getProjeAciklamasi().equals(PROJE_ACIKLAMASI))
+                {
+                    setProjeAciklamasi("");
+                }
+
+                Class.forName(JDBC_DRIVER);
+                Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
+                PreparedStatement pst = conn.prepareStatement("update tbl_proje set isim=?, aciklama=? where id=?");
+                pst.setString(1, getProjeAdi());
+                pst.setString(2, getProjeAciklamasi());
+                pst.setInt(3, getProjeID());
+                int sonuc = pst.executeUpdate();
+
+                setListeProje(getirProje());
+
+                return "secenek.xhtml?faces-redirect=true";
+            }
+            catch (SQLException e)
+            {
+                System.out.println("hata 44 : " + e.getMessage());
+                return null;
+            }
+            catch (ClassNotFoundException e)
+            {
+                System.out.println("hata 45 : " + e.getMessage());
+                return null;
+            }
+        }
+        else
+        {
+            return null;
+        }
+    }
     /*secenek.xhtml*/
 
     /*projeekle.xhtml*/
