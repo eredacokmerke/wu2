@@ -14,7 +14,6 @@
         <h:outputScript library="js" name="jquery-2.1.1.min.js" />
 
         <h:form id="formSecenek">
-
             <div id="secenek_div">
                 <table id="secenek_table">
                     <tr>
@@ -24,16 +23,16 @@
                                 <div class="metal-items-div">
                                     <ul class="metal-items">
                                         <li>
-                                            <h:commandLink action="#{hata.ekleProje()}" value="Proje Ekle" />
+                                            <h:commandLink id="secenekProje0" action="#{hata.ekleProje()}" value="Proje Ekle" />
                                         </li>
                                         <li>
-                                            <h:commandLink action="#{hata.butunProjeler()}" value="Bütün Projeler">
+                                            <h:commandLink id="secenekProje1" action="#{hata.butunProjeler()}" value="Bütün Projeler">
                                                 <f:ajax execute="@form" render="@none" />
                                             </h:commandLink>
                                         </li>
-                                        <c:forEach items="${hata.listeProje}" var="proje" varStatus="i"><!-- listeproje içindeki proje isimlerini html ye ekliyor -->
+                                        <c:forEach items="${hata.listeProje}" var="proje" varStatus="i">
                                             <li>
-                                                <h:commandLink value="#{proje.projeAdi}" action="#{hata.secilenProjeyiGetir(i.index)}">
+                                                <h:commandLink id="secenekProje#{i.index+2}" value="#{proje.projeAdi}" action="#{hata.secilenProjeyiGetir(i.index)}">
                                                     <f:ajax execute="@form" render="@none" />
                                                 </h:commandLink>
                                             </li>
@@ -47,11 +46,11 @@
                                 <div class="metal-output-div" metal-text="Görevler"></div>
                                 <div class="metal-items-div">
                                     <ul class="metal-items">
-                                        <li><h:commandLink action="#{hata.ekleGorev()}" value="Yeni Görev" target="_blank" /></li>
-                                        <li><h:commandLink action="#{hata.listeleKayitlar(hata.TUR_GOREV, hata.KAYIT_YENI)}" value="Etkin Görevler" target="_blank" /></li>
-                                        <li><h:commandLink action="#{hata.listeleKayitlar(hata.TUR_GOREV, hata.KAYIT_TAMAMLANAN)}" value="Biten Görevler" target="_blank" /></li>
-                                        <li><h:commandLink action="#{hata.listeleKayitlar(hata.TUR_GOREV, hata.KAYIT_HEPSI)}" value="Bütün Görevler" target="_blank" /></li>
-                                        <li><h:commandLink action="#{hata.listeleEtkinlikler(hata.TUR_GOREV)}" value="Görev Etkinlikleri" target="_blank" /></li>
+                                        <li><h:commandLink id="secenekGorev0" action="#{hata.ekleGorev()}" value="Yeni Görev" target="_blank" /></li>
+                                        <li><h:commandLink id="secenekGorev1" action="#{hata.listeleKayitlar(hata.TUR_GOREV, hata.KAYIT_YENI)}" value="Etkin Görevler" target="_blank" /></li>
+                                        <li><h:commandLink id="secenekGorev2" action="#{hata.listeleKayitlar(hata.TUR_GOREV, hata.KAYIT_TAMAMLANAN)}" value="Biten Görevler" target="_blank" /></li>
+                                        <li><h:commandLink id="secenekGorev3" action="#{hata.listeleKayitlar(hata.TUR_GOREV, hata.KAYIT_HEPSI)}" value="Bütün Görevler" target="_blank" /></li>
+                                        <li><h:commandLink id="secenekGorev4" action="#{hata.listeleEtkinlikler(hata.TUR_GOREV)}" value="Görev Etkinlikleri" target="_blank" /></li>
                                     </ul>
                                 </div>
                             </div>
@@ -61,11 +60,11 @@
                                 <div class="metal-output-div" metal-text="Hatalar"></div>
                                 <div class="metal-items-div">
                                     <ul class="metal-items">
-                                        <li><h:commandLink action="#{hata.ekleHata()}" value="Yeni Hata" target="_blank" /></li>
-                                        <li><h:commandLink action="#{hata.listeleKayitlar(hata.TUR_HATA, hata.KAYIT_YENI)}" value="Etkin Hatalar" target="_blank" /></li>
-                                        <li><h:commandLink action="#{hata.listeleKayitlar(hata.TUR_HATA, hata.KAYIT_TAMAMLANAN)}" value="Çözülen Hatalar" target="_blank" /></li>
-                                        <li><h:commandLink action="#{hata.listeleKayitlar(hata.TUR_HATA, hata.KAYIT_HEPSI)}" value="Bütün Hatalar" target="_blank" /></li>
-                                        <li><h:commandLink action="#{hata.listeleEtkinlikler(hata.TUR_HATA)}" value="Hata Etkinlikleri" target="_blank" /></li>
+                                        <li><h:commandLink id="secenekHata0" action="#{hata.ekleHata()}" value="Yeni Hata" target="_blank" /></li>
+                                        <li><h:commandLink id="secenekHata1" action="#{hata.listeleKayitlar(hata.TUR_HATA, hata.KAYIT_YENI)}" value="Etkin Hatalar" target="_blank" /></li>
+                                        <li><h:commandLink id="secenekHata2" action="#{hata.listeleKayitlar(hata.TUR_HATA, hata.KAYIT_TAMAMLANAN)}" value="Çözülen Hatalar" target="_blank" /></li>
+                                        <li><h:commandLink id="secenekHata3" action="#{hata.listeleKayitlar(hata.TUR_HATA, hata.KAYIT_HEPSI)}" value="Bütün Hatalar" target="_blank" /></li>
+                                        <li><h:commandLink id="secenekHata4" action="#{hata.listeleEtkinlikler(hata.TUR_HATA)}" value="Hata Etkinlikleri" target="_blank" /></li>
                                     </ul>
                                 </div>
                             </div>
@@ -77,12 +76,12 @@
                                 <div class="metal-output-div" metal-text="Seçenekler"></div>
                                 <div class="metal-items-div">
                                     <ul class="metal-items">
-                                        <li><h:commandLink action="#{hata.projeAyrintisi()}" value="Ayrıntılar" /></li>
-                                        <li><h:commandLink action="#{hata.silProje()}" value="Sil" onclick="return silmeOnayiGosterProje()" /></li> 
-                                        <li><h:commandLink action="#{hata.listeleProjeEtkinlikleri()}" value="Etkinlikler" target="_blank"/></li>
-                                        <li><h:commandLink action="#{hata.listeleKayitlar(hata.TUR_HEPSI, hata.KAYIT_HEPSI)}" value="Kayıtlar" target="_blank"/></li>
-                                        <li id="secenekHatalar"><h:commandLink action="#{hata.listeleKayitlar(hata.TUR_HATA, hata.KAYIT_HEPSI)}" value="Hatalar" target="_blank"/></li>
-                                        <li id="secenekGorevler"><h:commandLink action="#{hata.listeleKayitlar(hata.TUR_GOREV, hata.KAYIT_HEPSI)}" value="Görevler" target="_blank"/></li>
+                                        <li><h:commandLink id="secenekSecenek0" action="#{hata.projeAyrintisi()}" value="Ayrıntılar" /></li>
+                                        <li><h:commandLink id="secenekSecenek1" action="#{hata.silProje()}" value="Sil" onclick="return silmeOnayiGosterProje()" /></li> 
+                                        <li><h:commandLink id="secenekSecenek2" action="#{hata.listeleProjeEtkinlikleri()}" value="Etkinlikler" target="_blank"/></li>
+                                        <li><h:commandLink id="secenekSecenek3" action="#{hata.listeleKayitlar(hata.TUR_HEPSI, hata.KAYIT_HEPSI)}" value="Kayıtlar" target="_blank"/></li>
+                                        <li id="secenekHatalar"><h:commandLink id="secenekSecenek4" action="#{hata.listeleKayitlar(hata.TUR_HATA, hata.KAYIT_HEPSI)}" value="Hatalar" target="_blank"/></li>
+                                        <li id="secenekGorevler"><h:commandLink id="secenekSecenek5" action="#{hata.listeleKayitlar(hata.TUR_GOREV, hata.KAYIT_HEPSI)}" value="Görevler" target="_blank"/></li>
                                     </ul>
                                 </div>
                             </div>
@@ -93,7 +92,7 @@
         </h:form>
 
         <script src="https://raw.githack.com/eredacokmerke/metal/master/metal.min.js"></script>
-        <h:outputScript library="js" name="jies.js" />
+        <h:outputScript library="js" name="deneme_jies.js" />
 
     </h:body>
 </html>

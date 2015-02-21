@@ -745,17 +745,19 @@ public class Hata implements Serializable
         return "hataekle.xhtml?id=" + getHataBasligi() + "&pid=" + getProjeID() + "faces-redirect=true";
     }
 
-    public String listeleEtkinlikler(int tur)
+    public String listeleEtkinlikler(int tur)//etkinlikleri listeler
     {
         List<Etkinlikler> listeEtknlk = new ArrayList<>();
         String query1 = "";
         if (tur == TUR_GOREV)
         {
+            setListelenecekTur(TUR_GOREV);
             setAyrintiTur(TUR_GOREV);
             query1 = "select (select durum from tbl_durum_gorev where kod=tbl_etkinlik_gorev.durum) as drm, tarih, gorev_kod as kod from tbl_etkinlik_gorev where proje_id=? order by gorev_kod";
         }
         else if (tur == TUR_HATA)
         {
+            setListelenecekTur(TUR_HATA);
             setAyrintiTur(TUR_HATA);
             query1 = "select (select durum from tbl_durum_hata where kod=tbl_etkinlik_hata.durum) as drm, tarih, hata_kod as kod from tbl_etkinlik_hata where proje_id=? order by hata_kod";
         }
@@ -789,7 +791,7 @@ public class Hata implements Serializable
             return null;
         }
 
-        setListeDegisikliklerDurumHepsi(listeEtknlk);
+        setListeDegisikliklerDurumHepsi(listeEtknlk);//html sayfasında bu listedeki etkinlikler listelenecek
 
         //return "listeleEtkinlik.xhtml?t=" + TUR_GOREV + "&pid=" + getProjeID() + "faces-redirect=true";
         return "listeleEtkinlik.xhtml?&pid=" + getProjeID() + "faces-redirect=true";
@@ -1613,8 +1615,9 @@ public class Hata implements Serializable
 
     public void deneme()
     {
-        String ids = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("id");
-        System.out.println("DENEME : id : " + ids);
+        //String ids = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("id");
+        //System.out.println("DENEME : id : " + ids);
+        System.out.println("DENEME : id : ");
         //return "null";
     }
 }

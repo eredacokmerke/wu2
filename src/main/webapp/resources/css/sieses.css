@@ -475,11 +475,6 @@ nav span:focus
     padding: 10px;
 }
 
-.metal-items li:hover
-{
-    background-color: grey;
-}
-
 .metal-input-div 
 {
     border-radius: 3px;
@@ -520,6 +515,7 @@ nav span:focus
     height: 100%;
 }
 
-.metal-pointer{
-  color: rgb(0, 102, 0);
+.metal-pointer
+{
+    color: rgb(0, 102, 0);
 }
